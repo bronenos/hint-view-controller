@@ -1,0 +1,6 @@
+framework module HBHintViewController {
+  umbrella header "HBHintViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

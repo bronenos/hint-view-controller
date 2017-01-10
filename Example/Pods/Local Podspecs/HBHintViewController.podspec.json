@@ -1,0 +1,23 @@
+{
+  "name": "HBHintViewController",
+  "version": "0.1.0",
+  "summary": "A short description of HBHintViewController.",
+  "description": "Long description of HBHintViewController here.",
+  "homepage": "https://git.boloid.com/s.potemkin/hint-view-controller.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Stan Potemkin": "s.potemkin@boloid.com"
+  },
+  "source": {
+    "git": "https://git.boloid.com/s.potemkin/hint-view-controller.git",
+    "tag": "v0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Pod/Classes/**/*",
+  "resources": "Pod/Resources/*"
+}

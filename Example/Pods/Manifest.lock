@@ -1,0 +1,16 @@
+PODS:
+  - HBHintViewController (0.1.0)
+
+DEPENDENCIES:
+  - HBHintViewController (from `../`)
+
+EXTERNAL SOURCES:
+  HBHintViewController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  HBHintViewController: 49ce57c87ae626b988b8794809ca25d75b7b6045
+
+PODFILE CHECKSUM: a6b08929a2070da1f8ef2b0f0c12aa1701fee6a6
+
+COCOAPODS: 1.1.1
