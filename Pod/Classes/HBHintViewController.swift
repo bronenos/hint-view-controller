@@ -7,10 +7,12 @@ open class HBHintViewController: UIViewController {
     
     private let backgroundView: HBHintBackgroundView
     private let closeButton: UIButton
+    private let tapGesture: UITapGestureRecognizer
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         backgroundView = HBHintBackgroundView(frame: .zero)
         closeButton = UIButton(type: .custom)
+        tapGesture = UITapGestureRecognizer()
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -18,6 +20,8 @@ open class HBHintViewController: UIViewController {
         closeButton.setImage(UIImage(contentsOfFile: closeIconPath), for: .normal)
         closeButton.addTarget(self, action: #selector(handleCloseButton), for: .touchUpInside)
         closeButton.sizeToFit()
+        
+        tapGesture.addTarget(self, action: #selector(handleTapGeture))
         
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .crossDissolve
@@ -29,10 +33,23 @@ open class HBHintViewController: UIViewController {
         view.isOpaque = false
         view.addSubview(backgroundView)
         view.addSubview(closeButton)
+        view.addGestureRecognizer(tapGesture)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configure(opacity: CGFloat, dismissMode: HBHintDismissMode) {
+        backgroundView.fillingColor = UIColor(white: 0, alpha: opacity)
+        
+        closeButton.isHidden = true
+        tapGesture.isEnabled = false
+        
+        switch dismissMode {
+        case .button: closeButton.isHidden = false
+        case .tap: tapGesture.isEnabled = true
+        }
     }
     
     public func addHole(type: HBHintHoleType, layoutProvider: @escaping HBHintLayoutProvider) {
@@ -47,6 +64,7 @@ open class HBHintViewController: UIViewController {
     
     public func addHint(image: UIImage, layoutProvider: @escaping HBHintLayoutProvider) {
         let imageView = UIImageView(image: image)
+        view.addSubview(imageView)
         hintViews.append(imageView)
         
         let element = HintElement.imageView(imageView, layoutProvider)
@@ -82,6 +100,14 @@ open class HBHintViewController: UIViewController {
     }
     
     @objc private func handleCloseButton() {
+        dismiss()
+    }
+    
+    @objc private func handleTapGeture() {
+        dismiss()
+    }
+    
+    private func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 }

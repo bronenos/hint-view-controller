@@ -10,6 +10,11 @@ import Foundation
 
 public typealias HBHintLayoutProvider = (CGSize) -> CGRect
 
+@objc public enum HBHintDismissMode: Int {
+    case button
+    case tap
+}
+
 @objc public enum HBHintHoleType: Int {
     case ellipse
     case rectangle

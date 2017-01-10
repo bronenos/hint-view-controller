@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 final class HBHintBackgroundView: UIView {
+    var fillingColor = UIColor(white: 0, alpha: 0.75) {
+        didSet { setNeedsDisplay() }
+    }
+    
     var holeElements = [HoleElement]() {
         didSet { setNeedsDisplay() }
     }
@@ -43,7 +47,7 @@ final class HBHintBackgroundView: UIView {
         
         context.saveGState()
         context.clip(to: rect, mask: mask)
-        context.setFillColor(UIColor(white: 0, alpha: 0.75).cgColor)
+        context.setFillColor(fillingColor.cgColor)
         context.fill(rect)
         context.restoreGState()
     }
