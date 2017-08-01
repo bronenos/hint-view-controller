@@ -3,7 +3,6 @@
 //  Example
 //
 //  Created by Stan Potemkin on 09/01/2017.
-//  Copyright © 2017 Boloid. All rights reserved.
 //
 
 import UIKit
