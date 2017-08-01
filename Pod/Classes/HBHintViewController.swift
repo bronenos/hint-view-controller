@@ -9,12 +9,12 @@ open class HBHintViewController: UIViewController {
     private let closeButton: UIButton
     private let tapGesture: UITapGestureRecognizer
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public init() {
         backgroundView = HBHintBackgroundView(frame: .zero)
         closeButton = UIButton(type: .custom)
         tapGesture = UITapGestureRecognizer()
         
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: nil, bundle: nil)
         
         let closeIconPath = Bundle.frameworkFilePath("close_icon@2x.png")
         closeButton.setImage(UIImage(contentsOfFile: closeIconPath), for: .normal)
@@ -27,6 +27,10 @@ open class HBHintViewController: UIViewController {
         modalTransitionStyle = .crossDissolve
     }
     
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -34,10 +38,6 @@ open class HBHintViewController: UIViewController {
         view.addSubview(backgroundView)
         view.addSubview(closeButton)
         view.addGestureRecognizer(tapGesture)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     public func configure(opacity: CGFloat, dismissMode: HBHintDismissMode) {
