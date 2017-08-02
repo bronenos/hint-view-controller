@@ -1,6 +1,8 @@
 import UIKit
 
 open class HBHintViewController: UIViewController {
+	public var dismissHandler: (() -> Void)?
+
     private var holeElements = [HoleElement]()
     private var hintElements = [HintElement]()
     private var hintViews = [UIView]()
@@ -108,6 +110,7 @@ open class HBHintViewController: UIViewController {
     }
     
     private func dismiss() {
+    	dismissHandler?()
         dismiss(animated: true, completion: nil)
     }
 }
