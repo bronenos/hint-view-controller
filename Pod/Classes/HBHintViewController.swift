@@ -66,6 +66,7 @@ open class HBHintViewController: UIViewController {
     
     public func addHint(image: UIImage, layoutProvider: @escaping HBHintLayoutProvider) {
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         hintViews.append(imageView)
         
